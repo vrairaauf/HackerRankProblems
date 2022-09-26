@@ -227,31 +227,39 @@ class Entry{
         
 
         ArrayList<ArrayList<Integer>> obstacles=new ArrayList<ArrayList<Integer>>();
-        ArrayList<Integer> coords=new ArrayList<Integer>();
-        coords.add(0);
-        coords.add(0);
+        
         for(int i=0; i<obsNumber; i++){
-            while(true){
+            boolean again=true;
+            int x=0;
+            while(again){
                 System.out.println("row to obs"+(i+1));
-                int x=scanner.nextInt();
+                x=scanner.nextInt();
                 if(x<=dimensions && x>0){
-                    coords.set(0, x);
-                    break;  
-                }
-                System.out.println("invalid option try again");
+                    //coords.set(0, x);
+                    again=false;  
+                }else
+                    System.out.println("invalid option try again");
             }
-            while(true){
+            again=true;
+            int y=0;
+            while(again){
                System.out.println("col to obs"+(i+1));
-               int x=scanner.nextInt();
-                if(x<=dimensions && x>0){
-                    coords.set(1, x);
-                    break;  
-                }
-                System.out.println("invalid option try again");
+               y=scanner.nextInt();
+               if(y<=dimensions && y>0){
+                    //coords.set(1, y);
+
+                    again=false;  
+                }else
+                    System.out.println("invalid option try again");
             }
-                 
+            ArrayList<Integer> coords=new ArrayList<Integer>();
+            coords.add(x);
+            coords.add(y);
             obstacles.add(coords);
+            System.out.println(obstacles);
+
         }
+        scanner.close();
 
         System.out.println("selection finiched");
         System.out.println(dimensions);
@@ -259,12 +267,12 @@ class Entry{
         System.out.println(q_r);
         System.out.println(q_c);
         System.out.println(obstacles);
-/*
+
         int result=Result.queensAttack(dimensions, obsNumber, q_r, q_c, obstacles);
         System.out.println("the queen can attack "+result+" squares");
-        */
+        
     }catch (Exception e) {
-        System.out.println("problems");
+        System.out.println("problems run program again and choose right option");
     }
         
     }
