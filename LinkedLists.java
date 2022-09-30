@@ -145,6 +145,28 @@ class LinkedList<T>{
 		}
 		
 	}
+
+	/*sorting*/
+	/*bubble sort*/
+
+	public void bubbleSort(){
+		if(this.isEmpty()){System.out.println("empty !!");return;}
+		Node current=this.head, index=null;
+		int temp;
+		while(current!=null){
+			index=current.next;
+			while(index!=null){
+				if((int)current.data>(int)index.data){
+					temp=(int)current.data;
+					current.data=index.data;
+					index.data=temp;
+				}
+				index=index.next;
+			}
+			current=current.next;
+		}
+
+	}
 }
 public class LinkedLists{
 	public static void main(String[] args) {
@@ -158,6 +180,7 @@ public class LinkedLists{
 		//ls.pop();
 		//ls.delete();
 		ls.showList();
+		System.out.println("-----------------");
 		int size=ls.size();
 		System.out.println("the size of the linked list :"+size);
 		if(ls.contain(12)){
@@ -166,8 +189,12 @@ public class LinkedLists{
 		int searchPos=ls.getPosition(2);
 		System.out.println("the position of 2 "+searchPos);
 		ls.insertNode(7, 2);
-		ls.deleteWithValue(36);
 		ls.showList();
+		System.out.println("-----------------");
+		//ls.deleteWithValue(36);
+		ls.bubbleSort();
+		ls.showList();
+		System.out.println("-----------------");
 	}
 }
 
