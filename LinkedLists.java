@@ -10,8 +10,6 @@ class Node{
 
 class LinkedList<T>{
 	Node head;
-
-
 	// add at end of list
 	public void append(Object data){
 		if(this.isEmpty()){
@@ -167,6 +165,23 @@ class LinkedList<T>{
 		}
 
 	}
+	/*---------------------*/
+	public Boolean compare(LinkedList list1){
+		if(this.isEmpty() && list1.isEmpty())
+			return true;
+		if(this.size() != list1.size())
+			return false;
+		Node vHead1=this.head;
+		Node vHead2=list1.head;
+		while(vHead1!=null){
+			if(vHead1.data==vHead2.data){
+				vHead1=vHead1.next;
+				vHead2=vHead2.next;
+			}else
+				return false;
+		}
+		return true;
+	}
 }
 public class LinkedLists{
 	public static void main(String[] args) {
@@ -177,9 +192,17 @@ public class LinkedLists{
 		ls.append(4);
 		ls.append(5);
 		ls.append(6);
+
+		LinkedList ls1=new LinkedList();
+		ls1.append(1);
+		ls1.append(2);
+		ls1.append(3);
+		ls1.append(4);
+		ls1.append(5);
+		ls1.append(6);
 		//ls.pop();
 		//ls.delete();
-		ls.showList();
+		/*ls.showList();
 		System.out.println("-----------------");
 		int size=ls.size();
 		System.out.println("the size of the linked list :"+size);
@@ -195,6 +218,9 @@ public class LinkedLists{
 		ls.bubbleSort();
 		ls.showList();
 		System.out.println("-----------------");
+		*/
+		if(ls.compare(ls1))
+			System.out.println("equals");
 	}
 }
 
