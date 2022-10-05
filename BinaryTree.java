@@ -9,6 +9,8 @@ public class BinaryTree{
 		tr1.append(41);
 		tr1.append(41);
 		tr1.append(102);
+		if(tr1.exist(502))
+			System.out.println("5 exist in the tree");
 		tr1.show();
 	}
 }
@@ -63,8 +65,27 @@ class Tree{
 		showNode(node.rightNode);
 	}
 	public void show(){
-		
 		this.showNode(this.root);
 	}
+	/*--------------------*/
+	private boolean existHelp(Node node,int data){
+		if(node==null){
+			return false;
+		}
+		if((int)node.data == data){
+			return true;
+		}else{
+			if(data<=(int)node.data){
+				return existHelp(node.leftNode, data);
+			}else{
+				return existHelp(node.rightNode, data);
+			}
+		}
+		//return false;
+	}
+	public boolean exist(int data){
+		return this.existHelp(this.root, data);
+	}
+	/*--------------------*/
 	
 }
